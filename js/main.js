@@ -104,6 +104,35 @@
         $(this).addClass('filter-active');
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
-    
+
+    // Contact form mailto handler
+    var contactForm = $('#contactForm');
+    if (contactForm.length) {
+        contactForm.on('submit', function (e) {
+            e.preventDefault();
+            var name = $('#name').val().trim();
+            var email = $('#email').val().trim();
+            var phone = $('#phone').val().trim();
+            var subject = $('#subject').val().trim();
+            var message = $('#message').val().trim();
+            var feedback = $('#formFeedback');
+            feedback.removeClass('text-warning').text('');
+
+            if (!name || !email || !subject || !message) {
+                feedback.text('Please complete the required fields before sending.').addClass('text-warning');
+                return;
+            }
+
+            var body = 'Name: ' + name + '\n'
+                + 'Email: ' + email + '\n'
+                + (phone ? ('Phone: ' + phone + '\n') : '')
+                + '\nMessage:\n' + message;
+            var mailtoLink = 'mailto:hello@drkaranyadav.com?subject=' + encodeURIComponent('[Clinic] ' + subject) + '&body=' + encodeURIComponent(body);
+
+            window.location.href = mailtoLink;
+            feedback.text('Thank you! Your email client is opening with the details.');
+        });
+    }
+
 })(jQuery);
 

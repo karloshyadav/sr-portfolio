@@ -100,6 +100,22 @@ a:focus {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+.btn.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    box-shadow: inset 0 0 0 2px rgba(124, 58, 237, 0.8);
+}
+
+.btn.btn-outline::after {
+    display: none;
+}
+
+.btn.btn-outline:hover {
+    color: #ffffff;
+    background: rgba(124, 58, 237, 0.2);
+    box-shadow: inset 0 0 0 2px rgba(124, 58, 237, 0.9), 0 18px 40px rgba(124, 58, 237, 0.35);
+}
+
 .btn::after {
     content: "";
     position: absolute;
@@ -421,8 +437,15 @@ html {
     color: var(--secondary);
 }
 
-.hero .hero-btn .btn {
+.hero .hero-btn {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-top: 25px;
+}
+
+.hero .hero-btn .btn {
+    margin-top: 0;
 }
 
 .hero .hero-image {
@@ -485,8 +508,8 @@ html {
         letter-spacing: 2px;
     }
 
-    .hero .hero-btn .btn {
-        margin-top: 20px;
+    .hero .hero-btn {
+        justify-content: center;
     }
 }
 
@@ -869,6 +892,125 @@ html {
 
     .service .service-text h3 {
         font-size: 20px;
+    }
+}
+
+
+/*******************************/
+/********* Clinic CSS *********/
+/*******************************/
+.clinic {
+    position: relative;
+    padding: 110px 0;
+}
+
+.clinic::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.25), transparent 55%),
+        radial-gradient(circle at 5% 90%, rgba(124, 58, 237, 0.3), transparent 60%);
+    z-index: -1;
+}
+
+.clinic .clinic-intro {
+    background: var(--surface-strong);
+    border-radius: 32px;
+    padding: 48px 42px;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    height: 100%;
+}
+
+.clinic .clinic-intro h3 {
+    color: var(--secondary);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.clinic .clinic-intro h2 {
+    font-size: clamp(28px, 4vw, 38px);
+    margin-bottom: 24px;
+}
+
+.clinic .clinic-intro p {
+    color: var(--text-muted);
+    margin-bottom: 28px;
+}
+
+.clinic .clinic-intro ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    display: grid;
+    gap: 14px;
+}
+
+.clinic .clinic-intro ul li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.clinic .clinic-intro ul li i {
+    color: var(--accent);
+    font-size: 18px;
+    width: 28px;
+}
+
+.clinic .clinic-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.clinic .clinic-card {
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 26px;
+    padding: 34px 28px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.35s ease, border-color 0.35s ease;
+    height: 100%;
+}
+
+.clinic .clinic-card h4 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+}
+
+.clinic .clinic-card p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.clinic .clinic-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+@media (max-width: 991.98px) {
+    .clinic {
+        padding: 80px 0;
+    }
+
+    .clinic .clinic-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .clinic .clinic-intro {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .clinic .clinic-intro {
+        padding: 36px 28px;
     }
 }
 
@@ -1343,15 +1485,82 @@ html {
     background: none;
 }
 
+.contact .contact-info {
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 32px;
+    padding: 48px 42px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: var(--shadow-lg);
+    height: 100%;
+}
+
+.contact .contact-info h3 {
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.contact .contact-info p {
+    color: var(--text-muted);
+}
+
+.contact .contact-info .info-block {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.contact .contact-info .info-block:last-child {
+    border-bottom: none;
+}
+
+.contact .contact-info .info-block i {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(124, 58, 237, 0.18);
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.contact .contact-info .info-block h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
 .contact .contact-form {
-    position: relative;
-    padding: 70px 60px;
-    margin: 0 auto;
-    max-width: 760px;
     background: var(--surface-strong);
     border-radius: 32px;
+    padding: 48px 42px;
     box-shadow: var(--shadow-xl);
     border: 1px solid rgba(148, 163, 184, 0.25);
+    height: 100%;
+}
+
+.contact .contact-form h3 {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.contact .contact-form p {
+    color: var(--text-muted);
+}
+
+.contact .contact-form .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.contact .contact-form .control-group {
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact .contact-form input,
@@ -1361,29 +1570,44 @@ html {
     background: rgba(15, 23, 42, 0.65);
     border-radius: 16px;
     border: 1px solid rgba(148, 163, 184, 0.25);
-    margin-bottom: 20px;
+    margin-top: 12px;
 }
 
 .contact .contact-form textarea {
-    height: 140px;
+    resize: vertical;
 }
 
 .contact .contact-form .btn {
-    width: 100%;
-    margin-top: 10px;
+    margin-top: 18px;
+    width: auto;
 }
 
 .contact .contact-form .form-control::placeholder {
     color: var(--text-muted);
 }
 
-.contact .help-block ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+.contact .form-feedback {
+    margin-top: 12px;
     font-size: 14px;
-    font-style: italic;
-    color: var(--secondary);
+    color: var(--accent);
+}
+
+@media (max-width: 991.98px) {
+    .contact .contact-info,
+    .contact .contact-form {
+        padding: 40px 32px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .contact .contact-info,
+    .contact .contact-form {
+        padding: 32px 24px;
+    }
+
+    .contact .contact-form .form-row {
+        flex-direction: column;
+    }
 }
 
 
