@@ -127,6 +127,7 @@
                 + 'Email: ' + email + '\n'
                 + (phone ? ('Phone: ' + phone + '\n') : '')
                 + '\nMessage:\n' + message;
+            var mailtoLink = 'mailto:care@shanticlinic.example?subject=' + encodeURIComponent('[Clinic] ' + subject) + '&body=' + encodeURIComponent(body);
             var mailtoLink = 'mailto:hello@drkaranyadav.com?subject=' + encodeURIComponent('[Clinic] ' + subject) + '&body=' + encodeURIComponent(body);
 
             window.location.href = mailtoLink;
