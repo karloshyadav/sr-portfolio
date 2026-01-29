@@ -55,4 +55,21 @@
             }
         });
     }
+
+    const hero = document.querySelector('.hero');
+    const heroTitle = document.querySelector('.hero-title');
+    if (hero && heroTitle) {
+        hero.addEventListener('mousemove', (event) => {
+            const rect = hero.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            heroTitle.style.setProperty('--spot-x', `${x}%`);
+            heroTitle.style.setProperty('--spot-y', `${y}%`);
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            heroTitle.style.setProperty('--spot-x', '40%');
+            heroTitle.style.setProperty('--spot-y', '40%');
+        });
+    }
 })();
